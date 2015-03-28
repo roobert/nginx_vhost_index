@@ -19,29 +19,33 @@ helpers do
   def http_status?(vhost)
     true if HTTParty.get("http://#{vhost}").code.to_s =~ /^2../
   end
-end
 
-before do
-  @vhosts = {}
+  def build_vhost_list
+    @vhosts = {}
 
-  Dir["/etc/nginx/sites-enabled/*"].each do |file|
-    next unless File.file?(file)
+    Dir["/etc/nginx/sites-enabled/*"].each do |file|
+      next unless File.file?(file)
 
-    File.open(file, 'r') do |file_contents|
-      matches = file_contents.grep(/server_name.*;/)
+      File.open(file, 'r') do |file_contents|
+        matches = file_contents.grep(/server_name.*;/)
 
-      next if matches.nil?
+        next if matches.nil?
 
-      matches.inject(@vhosts) do |vhosts, match|
-        vhost = match.gsub(/ *server_name */, '').gsub(/;$/, '').chomp
+        matches.inject(@vhosts) do |vhosts, match|
+          vhost = match.gsub(/ *server_name */, '').gsub(/;$/, '').chomp
 
-        next if vhost == 'index.localhost'
+          next if vhost == 'index.localhost'
 
-        vhosts[vhost] = http_status?(vhost) ? :success : :failure
-        vhosts
+          vhosts[vhost] = http_status?(vhost) ? :success : :failure
+          vhosts
+        end
       end
     end
   end
+end
+
+before do
+  build_vhost_list
 end
 
 set :haml, { :ugly=>true }
