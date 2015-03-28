@@ -26,7 +26,7 @@ helpers do
         next if matches.nil?
 
         matches.inject(@vhosts) do |vhosts, match|
-          vhost = match.gsub(/ *server_name */, '').gsub(/;$/, '').chomp
+          vhost = match.gsub(/ *server_name */, '').gsub(/;$/, '').chomp.split(' ')[0]
 
           next if vhost == 'index.localhost'
 
