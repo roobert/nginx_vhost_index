@@ -1,0 +1,10 @@
+.container
+  %hr
+
+  .row
+    - @vhosts.each_pair do |vhost, state|
+      .col-md-4
+        .panel.panel-default{ class: state }
+          %a{ href: "http://#{vhost}" }
+            .panel-body.text-center
+              =vhost

@@ -1,0 +1,15 @@
+get actual site list
+
+margins between boxes
+
+red box != 200
+
+green box = 200
+
+mouse overs
+
+nginx config
+
+init.d script to run thin
+
+requires thin, redcarpet, sinatra, rake..

@@ -1,0 +1,48 @@
+#menu h1 {
+  font-size: 20px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+#menu h2 {
+  font-size: 18px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+#menu h3 {
+  font-size: 16px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+#menu h4 {
+  font-size: 14px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+ol {
+  padding-left: 10px;
+}
+
+div.success a:hover div.panel-body {
+  background: #99ff99;
+}
+
+div.failure a:hover div.panel-body {
+  background: #ff9999;
+}
+
+div.success div.panel-body {
+  background: #ccffcc;
+}
+
+div.failure div.panel-body {
+  background: #ffcccc;
+}
+
+div.panel {
+  border: 0;
+}
+
+a:hover {
+  text-decoration: none;
+}
