@@ -3,14 +3,8 @@
 require 'sinatra'
 require 'httparty'
 require 'redcarpet'
-require 'ostruct'
-
 require 'haml'
 require 'sass'
-
-require 'ap'
-require 'pp'
-require 'yaml'
 
 # this auto-reloads files with changed mtime
 Sinatra::Application.reset!
