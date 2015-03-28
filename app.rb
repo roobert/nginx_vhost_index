@@ -38,10 +38,6 @@ helpers do
   end
 end
 
-before do
-  build_vhost_list
-end
-
 set :haml, { :ugly=>true }
 
 get '/css/:style.css' do
@@ -49,5 +45,7 @@ get '/css/:style.css' do
 end
 
 get '/' do
+  build_vhost_list
+
   haml :index
 end
